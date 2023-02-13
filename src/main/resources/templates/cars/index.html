@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All blanks</title>
+</head>
+<body>
+<div th:each="carBlank : ${carBlanks}">
+    <a th:href="@{/cars/{id}(id=${carBlank.getId()})}"
+       th:text="${carBlank.getNameOfCarBlank()+',   '+carBlank.getDescription()+',   '+carBlank.getYearOfRelease()}+', '+carBlank.getCost">car</a>
+</div>
+<br/>
+<hr/>
+<a href="/cars/new">Create new carBlank</a>
+
+</body>
+</html>
