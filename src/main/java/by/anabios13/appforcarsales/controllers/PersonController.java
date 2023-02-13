@@ -1,12 +1,11 @@
 package by.anabios13.appforcarsales.controllers;
 
+import by.anabios13.appforcarsales.models.Person;
 import by.anabios13.appforcarsales.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/people")
@@ -18,9 +17,42 @@ public class PersonController {
         this.personService = personService;
     }
 
+    @GetMapping()
+    public  String index(Model model){
+        model.addAttribute("people",personService.findAll());
+        return "people/index";
+    }
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("person", personService.findOne(id));
         return "people/show";
+    }
+
+    @GetMapping("/new")
+    public String newCarBlank(@ModelAttribute("person") Person person){
+        return "people/new";
+    }
+
+    @PostMapping()
+    public String create(@ModelAttribute("person") Person  person){
+       personService.save(person);
+        return  "redirect:/people";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String edit(Model model, @PathVariable("id") int id){
+        model.addAttribute("person",personService.findOne(id));
+        return "people/edit";
+    }
+    @PatchMapping("/{id}")
+    public String update(@ModelAttribute("person") Person person,
+                         @PathVariable("id") int id){
+        personService.update(id,person);
+        return "redirect:/people";
+    }
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable("id") int id){
+        personService.delete(id);
+        return "redirect:/people";
     }
 }

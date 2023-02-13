@@ -7,7 +7,7 @@
 <body>
 <div th:each="carBlank : ${carBlanks}">
     <a th:href="@{/cars/{id}(id=${carBlank.getId()})}"
-       th:text="${carBlank.getNameOfCarBlank()+',   '+carBlank.getDescription()+',   '+carBlank.getYearOfRelease()}+', '+carBlank.getCost">car</a>
+       th:text="${carBlank.getNameOfCarBlank()+',   '+carBlank.getYearOfRelease()+', '+carBlank.getCost}">car</a>
 </div>
 <br/>
 <hr/>
