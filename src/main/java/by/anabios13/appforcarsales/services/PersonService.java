@@ -19,6 +19,9 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
+    public Optional<Person> getPersonByName(String name){
+        return personRepository.findByName(name);
+    }
     public Person findOne(int id) {
         Optional<Person> foundPerson = personRepository.findById(id);
         return foundPerson.orElse(null);

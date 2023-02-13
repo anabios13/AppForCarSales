@@ -7,11 +7,20 @@
 <body>
 <div th:each="carBlank : ${carBlanks}">
     <a th:href="@{/cars/{id}(id=${carBlank.getId()})}"
-       th:text="${carBlank.getNameOfCarBlank()+',   '+carBlank.getYearOfRelease()+', '+carBlank.getCost}">car</a>
+       th:text="${carBlank.getNameOfCarBlank()+',   '+carBlank.getYearOfRelease()+', '+carBlank.getCost+', was created at:'+carBlank.getCreatedAt()}">car</a>
+</p>
 </div>
 <br/>
 <hr/>
 <a href="/cars/new">Create new carBlank</a>
-
+<p><a href="/people">People</a></p>
+<div class="pagination_section">
+    <a href="#"><< Previous</a>
+    <a href="/cars?page=0" title="Algorithm">1</a>
+    <a href="/cars?page=1" title="DataStructure">2</a>
+    <a href="/cars?page=2" title="Languages">3</a>
+    <a href="/cars?page=3" title="Interview" class="active">4</a>
+    <a href="#">Next >></a>
+</div>
 </body>
 </html>

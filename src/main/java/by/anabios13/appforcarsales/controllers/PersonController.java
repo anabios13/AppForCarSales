@@ -44,12 +44,14 @@ public class PersonController {
         model.addAttribute("person",personService.findOne(id));
         return "people/edit";
     }
+
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("person") Person person,
                          @PathVariable("id") int id){
         personService.update(id,person);
         return "redirect:/people";
     }
+
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") int id){
         personService.delete(id);

@@ -18,8 +18,11 @@ public class CarBlankController {
     }
 
     @GetMapping()
-    public  String index(Model model){
-        model.addAttribute("carBlanks",carBlankService.findAll());
+    public  String index(@RequestParam(value="page",required = false) Integer page,Model model){
+       if(page==null)
+        model.addAttribute("carBlanks",carBlankService.findAll(0));
+       else
+           model.addAttribute("carBlanks",carBlankService.findAll(page));
         return "cars/index";
     }
 

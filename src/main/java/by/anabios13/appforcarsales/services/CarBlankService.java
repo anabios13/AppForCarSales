@@ -3,6 +3,8 @@ package by.anabios13.appforcarsales.services;
 import by.anabios13.appforcarsales.models.CarBlank;
 import by.anabios13.appforcarsales.repositories.CarBlankRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,16 +15,21 @@ import java.util.Optional;
 @Service
 @Transactional(readOnly = true)
 public class CarBlankService {
+    private final int blanksPerPage = 15;//amount blanks in the page
     private final CarBlankRepository carBlankRepository;
 
     @Autowired
     public CarBlankService(CarBlankRepository carRepository) {
         this.carBlankRepository = carRepository;
     }
-
-    public List<CarBlank> findAll() {
-        return carBlankRepository.findAll();
+//
+    public List<CarBlank> findAll(Integer page) {
+        return carBlankRepository.findAll(PageRequest.of(page,blanksPerPage,Sort.by("createdAt").descending())).getContent();
     }
+
+//    public List<CarBlank> searchByName(String partOfNameTheBlank){
+//        return carBlankRepository.findByNameOfCarBlankWith(partOfNameTheBlank);
+//    }
 
     public CarBlank findOne(int id) {
         Optional<CarBlank> foundCarBlank = carBlankRepository.findById(id);
