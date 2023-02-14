@@ -60,4 +60,15 @@ public class CarBlankController {
         carBlankService.delete(id);
         return "redirect:/cars";
     }
+
+    @GetMapping("/search")
+    public String searchPage(){
+        return "cars/search";
+    }
+
+    @PostMapping("/search")
+    public String makeSearch(Model model, @RequestParam("nameOfCarBlank") String nameOfCarBlank){
+        model.addAttribute("carBlanks",carBlankService.searchByName(nameOfCarBlank));
+        return "cars/search";
+    }
 }

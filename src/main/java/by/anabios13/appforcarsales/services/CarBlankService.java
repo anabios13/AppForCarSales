@@ -27,9 +27,9 @@ public class CarBlankService {
         return carBlankRepository.findAll(PageRequest.of(page,blanksPerPage,Sort.by("createdAt").descending())).getContent();
     }
 
-//    public List<CarBlank> searchByName(String partOfNameTheBlank){
-//        return carBlankRepository.findByNameOfCarBlankWith(partOfNameTheBlank);
-//    }
+    public List<CarBlank> searchByName(String partOfNameTheBlank){
+        return carBlankRepository.findByNameOfCarBlankContaining(partOfNameTheBlank);
+    }
 
     public CarBlank findOne(int id) {
         Optional<CarBlank> foundCarBlank = carBlankRepository.findById(id);

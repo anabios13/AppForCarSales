@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface CarBlankRepository extends JpaRepository<CarBlank,Integer> {
-    //List<CarBlank> findByNameOfCarBlankWith(String nameOfCarBlank);
+    List<CarBlank> findByNameOfCarBlankContaining(String nameOfCarBlank);
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search car</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/cars/search}">
+    <label for="nameOfCarBlank"> </label>
+    <input type="text" id="nameOfCarBlank" name="nameOfCarBlank"/>
+    <br/>
+    <input type="submit" value="Search"/>
+</form>
+
+<div th:if="${carBlanks}">
+    <div th:if="${carBlanks.isEmpty()}">
+        <span>Nothing was found</span>
+    </div>
+
+    <div th:each="carBlank : ${carBlanks}">
+        <a th:href="@{/cars/{id}(id=${carBlank.getId()})}"
+           th:text="${carBlank.getNameOfCarBlank()+',   '+carBlank.getYearOfRelease()+', '+carBlank.getCost+', was created at:'+carBlank.getCreatedAt()}">car</a>
+        </p>
+</div>
+<form th:action="@{/cars}">
+    <input type="submit" value="Cars"/>
+</form>
+</body>
+</html>
