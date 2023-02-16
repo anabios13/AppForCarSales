@@ -20,8 +20,8 @@ public class Person {
     @NotEmpty(message = "name of person should not be empty")
     @Column(name = "name")
     private String name;
-    @Min(value =18, message="You must older than 18")
-    @Max(value =130, message="You mast be younger than 130")
+    @Min(value =18, message="You must be older than 18")
+    @Max(value =130, message="You must be younger than 130")
     @Column(name = "age")
     private int age;
 

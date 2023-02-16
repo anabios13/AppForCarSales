@@ -18,6 +18,7 @@ dependencies {
 	implementation 'org.thymeleaf:thymeleaf-spring5:3.1.1.RELEASE'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.0.2'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.5.RELEASE'
+	implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
