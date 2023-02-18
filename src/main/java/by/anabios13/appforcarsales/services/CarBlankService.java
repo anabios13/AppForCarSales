@@ -2,9 +2,12 @@ package by.anabios13.appforcarsales.services;
 
 import by.anabios13.appforcarsales.models.CarBlank;
 import by.anabios13.appforcarsales.repositories.CarBlankRepository;
+import by.anabios13.appforcarsales.security.PersonDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,10 +38,13 @@ public class CarBlankService {
         Optional<CarBlank> foundCarBlank = carBlankRepository.findById(id);
         return foundCarBlank.orElse(null);
     }
-
+//Method for saving blank by authorisation user
     @Transactional
     public void save(CarBlank carBlank){
         carBlank.setCreatedAt(new Date());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        PersonDetails personDetails = (PersonDetails) auth.getPrincipal();
+        carBlank.setOwner(personDetails.getPerson());
         carBlankRepository.save(carBlank);
     }
 

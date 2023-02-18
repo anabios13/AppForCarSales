@@ -5,7 +5,7 @@
     <title>Person</title>
 </head>
 <body>
-<p th:text="${'name: '+person.getName()+ ', age:'+person.getAge()}">VALUE</p>
+<p th:text="${'name: '+person.getName()+ ', year of birth:'+person.getYearOfBirth()}">VALUE</p>
 <p th:text="${'Id: ' +person.getId()}">VALUE</p>
 <div th:each="carBlank : ${person.getCarBlanks()}">
     <a th:text="${carBlank.getNameOfCarBlank()+',   '+carBlank.getYearOfRelease()+', '+carBlank.getCost()}">car</a>

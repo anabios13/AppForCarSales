@@ -15,12 +15,16 @@
 <a href="/cars/new">Create new carBlank</a>
 <p><a href="/cars/search">Search car by name</a></p>
 <p><a href="/people">People</a></p>
+<form th:action="@{/logout}" th:method="POST">
+    <input type="submit" value="Logout" />
+</form>
+
 <div class="pagination_section">
     <a href="#"><< Previous</a>
-    <a href="/cars?page=0" title="Algorithm">1</a>
-    <a href="/cars?page=1" title="DataStructure">2</a>
-    <a href="/cars?page=2" title="Languages">3</a>
-    <a href="/cars?page=3" title="Interview" class="active">4</a>
+    <a href="/cars?page=0" >1</a>
+    <a href="/cars?page=1" >2</a>
+    <a href="/cars?page=2" >3</a>
+    <a href="/cars?page=3"  class="active">4</a>
     <a href="#">Next >></a>
 </div>
 </body>

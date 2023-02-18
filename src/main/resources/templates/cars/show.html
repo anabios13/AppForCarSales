@@ -6,7 +6,7 @@
 </head>
 <body>
 <p th:text="${carBlank.getNameOfCarBlank()+ ', YearOfRelease:'+carBlank.getYearOfRelease()+' Cost:'+carBlank.getCost()+', CreatedAt: '+carBlank.getCreatedAt()}">VALUE</p>
-<p th:text="${'Owner: '+carBlank.getOwner().getName+', '+carBlank.getOwner().getAge}">VALUE</p>
+<p th:text="${'Owner: '+carBlank.getOwner().getName+', '+carBlank.getOwner().getYearOfBirth}">VALUE</p>
 <p th:text="${carBlank.getDescription}">VALUE</p>
 <p th:text="${'Id: '+carBlank.getId()}">VALUE</p>
 

@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface PersonRepository extends JpaRepository<Person,Integer> {
+public interface PeopleRepository extends JpaRepository<Person,Integer> {
     List<Person> findByNameContaining(String name);
+
+    Optional<Person> findByName(String username);
 }

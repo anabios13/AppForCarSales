@@ -11,10 +11,6 @@
     <input type="text" th:field="*{nameOfCarBlank}" id="nameOfCarBlank"/>
     <div style="color:red" th:if="${#fields.hasErrors('nameOfCarBlank')}" th:errors="*{nameOfCarBlank}">Name Error</div>
     <br/>
-    <label for="owner">Enter owner: </label>
-    <input type="text" th:field="*{owner}" id="owner"/>
-    <div style="color:red" th:if="${#fields.hasErrors('owner')}" th:errors="*{owner}">owner Error</div>
-    <br/>
     <label for="yearOfRelease">Enter year of release your car(yyyy): </label>
     <input type="text" th:field="*{yearOfRelease}" id="yearOfRelease"/>
     <div style="color:red" th:if="${#fields.hasErrors('yearOfRelease')}" th:errors="*{yearOfRelease}">yearOfRelease Error</div>
