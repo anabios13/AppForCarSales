@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "person")
@@ -28,6 +29,19 @@ public class Person {
 
     @Column(name = "role")
     private String role;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return yearOfBirth == person.yearOfBirth && Objects.equals(name, person.name) && Objects.equals(password, person.password) && Objects.equals(role, person.role);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, password, role, yearOfBirth);
+    }
 
     public String getRole() {
         return role;
