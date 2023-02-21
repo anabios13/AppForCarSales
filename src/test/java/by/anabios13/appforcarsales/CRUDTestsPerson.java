@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class CRUDTestsPerson {
 
-//Be careful when yuo using tests. If you have users with names:
+//Be careful when you're using tests. If you have users with names:
 // "My person" and "Updated person Name"
 // They will be removed
 

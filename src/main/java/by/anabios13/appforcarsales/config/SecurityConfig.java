@@ -23,7 +23,6 @@ public class SecurityConfig {
         this.personDetailsService = personDetailsService;
     }
 
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
