@@ -3,6 +3,7 @@ package by.anabios13.appforcarsales;
 import by.anabios13.appforcarsales.models.Person;
 import by.anabios13.appforcarsales.repositories.PeopleRepository;
 import by.anabios13.appforcarsales.services.PersonService;
+import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +60,16 @@ public class CRUDTestsPerson {
         assertTrue(personService.searchPersonByName(person.getName()).isEmpty());
     }
 
-
+    @Test
+    public void testSaveWithIncorrectData() {
+        person.setYearOfBirth(-1);
+        if (!personService.searchPersonByName(person.getName()).isEmpty()) {
+            int id = personService.searchPersonByName(person.getName()).get(0).getId();
+            personService.delete(id);
+        }
+        assertThrows(ConstraintViolationException.class, () -> personService.save(person));
+        assertTrue(personService.searchPersonByName(person.getName()).isEmpty());
+        if (!personService.searchPersonByName(person.getName()).isEmpty())
+            personService.delete(personService.searchPersonByName(person.getName()).get(0).getId());
+    }
 }
